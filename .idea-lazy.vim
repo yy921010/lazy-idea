@@ -4,89 +4,37 @@
 " source ~/.idea-lazy.vim
 
 " LazyVim default settings
-
 " https://www.lazyvim.org/configuration/general
 
 let mapleader=" "
 let maplocalleader="\\"
 
-" Enable auto write
-set autowrite
-set completeopt=menu,menuone,noselect
-" Hide * markup for bold and italic, but not markers with substitutions
-set conceallevel=2
 " Confirm to save changes before exiting modified buffer
-set confirm
-" Enable highlighting of the current line
-set cursorline
-" Use spaces instead of tabs
-set expandtab
-set foldlevel=99
-set formatoptions=jcroqlnt " tcqj
-set grepformat=%f:%l:%c:%m
-set grepprg=rg\ --vimgrep
-" Ignore case
-set ignorecase
-" Preview incremental substitute
-set inccommand=nosplit
-set jumpoptions=view
-" Global statusline
-set laststatus=3
-" Wrap lines at convenient points
-set linebreak
-" Show some invisible characters (tabs...)
-set list
-" Enable mouse mode
-set mouse=a
+set formatoptions=jcroqlnt
 " Print line number
 set number
-" Popup blend
-set pumblend=10
-" Maximum number of entries in a popup
-set pumheight=10
 " Relative line numbers
 set relativenumber
 " Lines of context
 set scrolloff=4
 " Round indent
 set shiftround
-" Size of an indent
-set shiftwidth=2
-" Don't show mode since we have a statusline
-set showmode=false
 " Columns of context
 set sidescrolloff=8
-" Always show the signcolumn
-set signcolumn=yes
-" Don't ignore case with capitals
-set smartcase
-" Insert indents automatically
-set smartindent
-set spelllang=en
-" Put new windows below current
-set splitbelow
-set splitkeep=screen
-" Put new windows right of current
-set splitright
-" Number of spaces tabs count for
-set tabstop=2
-" True color support
-set termguicolors
-set timeoutlen=300
-" Enable undo file
-set undofile
+" which-key says to set this high, or set notimeout
+set timeoutlen=5000
 set undolevels=10000
-" Save swap file and trigger CursorHold
-set updatetime=200
-" Allow cursor to move where there is no text in visual block mode
-set virtualedit=block
-" Command-line completion mode
-set wildmode=longest:full,full
-" Minimum window width
-set winminwidth=5
 " Disable line wrap
 set nowrap
 
+" Neovim settings that differ from Vim
+" https://neovim.io/doc/user/diff.html
+" https://github.com/mikeslattery/nvim-defaults.vim/blob/main/plugin/.vimrc
+
+set backspace=indent,eol,start
+set formatoptions=tcqj
+set listchars=tab:>\ ,trail:-,nbsp:+
+set shortmess=filnxtToOF
 
 " Enable plugin behavior
 
@@ -101,6 +49,8 @@ Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-sneak'
 " Enable the whichkey plugin, available on Jetbrains marketplace
 set which-key
+" Extended matching.  A Neovim default plugin.
+set matchit
 
 " Key maps
 
@@ -480,3 +430,13 @@ nmap <leader>tt <Action>(RunTestGroup)
 nmap <leader>tT <Action>(RunAllTests)
 " Toggle Watch
 nmap <leader>tw <Action>(ToggleTestWatch)
+
+" Neovim mappings
+" https://neovim.io/doc/user/vim_diff.html#_default-mappings
+
+nnoremap Y y$
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+" Q isn't exactly the same.
+nnomap Q @@
+" There are several more Neovim mappings that need to be ported.  See link.
