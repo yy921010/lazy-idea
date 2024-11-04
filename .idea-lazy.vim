@@ -87,11 +87,11 @@ nmap <S-l> <Action>(NextTab)
 " Prev Buffer (alternative)
 nmap <S-h> <Action>(PreviousTab)
 " Next Buffer (alternative)
-nmap <S-l> <Action>(NextTab)
+nmap [b <Action>(NextTab)
 " Switch to Other Buffer
-nmap <S-l> <Action>(NextTab)
+nmap ]b <Action>(NextTab)
 " Switch to Other Buffer (alternative)
-nmap <S-l> <Action>(NextTab)
+nmap <leader>bb <Action>(NextTab)
 " Delete Buffer
 nmap <leader>bd <Action>(CloseContent)
 " Delete Buffer and Window
@@ -112,7 +112,7 @@ nmap <leader>l <Action>(WelcomeScreen.Plugins)
 " New File
 nmap <leader>fn :enew<CR>
 " Location List
-nmap <leader>xq <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>xl <Action>(ActivateProblemsViewToolWindow)
 " Quickfix List
 nmap <leader>xq <Action>(ActivateProblemsViewToolWindow)
 " Previous Quickfix
@@ -161,37 +161,37 @@ nmap <leader>uh :echo 'There is no equivalent mapping for Toggle Inlay Hints.'<c
 " Lazygit (Root Dir)
 nmap <leader>gg <Action>(ActivateCommitToolWindow)
 " Lazygit (cwd)
-nmap <leader>gg <Action>(ActivateCommitToolWindow)
+nmap <leader>gG <Action>(ActivateCommitToolWindow)
 " Git Blame Line
 nmap <leader>gb <Action>(Annotate)
 " Git Browse
 nmap <leader>gB :echo 'Not yet implemented'<CR>
 " Lazygit Current File History
-nmap <leader>gl <Action>(Vcs.Show.Log)
+nmap <leader>gf <Action>(Vcs.Show.Log)
 " Lazygit Log
 nmap <leader>gl <Action>(Vcs.Show.Log)
 " Lazygit Log (cwd)
-nmap <leader>gl <Action>(Vcs.Show.Log)
+nmap <leader>gL <Action>(Vcs.Show.Log)
 " Quit All
 nmap <leader>qq <Action>(Exit)
 " Inspect Pos
 nmap <leader>ui <Actrion>(FindUsages)
 " Inspect Tree
-nmap <leader>gl <Action>(ActivateStructureToolWindow)
+nmap <leader>uI <Action>(ActivateStructureToolWindow)
 " LazyVim Changelog
-nmap <leader>gl <Action>(Vcs.Show.Log)
+nmap <leader>L <Action>(Vcs.Show.Log)
 " Terminal (Root Dir)
 nmap <leader>ft <Action>(ActivateTerminalToolWindow)
 " Terminal (cwd)
 nmap <leader>fT <Action>(ActivateTerminalToolWindow)
 " Terminal (Root Dir)
-nmap <C-/><C-w> <Action>(ActivateTerminalToolWindow)
+" nmap <C-/><C-w> <Action>(ActivateTerminalToolWindow)
 " Hide Terminal
 nmap <C-_> <Action>(ActivateTerminalToolWindow)
-" Split Window Below
-nmap <leader>- :split<CR>
+" Split Window Below.  :split<cr> doesn't work.
+nmap <leader>- <c-w>s
 " Split Window Right
-nmap <leader>| :vsplit<CR>
+nmap <leader><bar> <c-w>v
 " Delete Window
 nmap <leader>wd <Action>(CloseContent)
 " Toggle Maximize
@@ -277,7 +277,7 @@ nmap <leader>, <Action>(Switcher)
 " Grep (Root Dir)
 nmap <leader>/ <Action>(FindInPath)
 " Command History
-nmap <leader>: <Action>(ShowCommands)
+nmap <leader>: :history<cr>
 " Buffers
 nmap <leader>fb <Action>(Switcher)
 " Find Config File
@@ -319,7 +319,7 @@ nmap <leader>sh <Action>(HelpTopics)
 " Search Highlight Groups
 nmap <leader>sH <Action>(HighlightUsagesInFile)
 " Jumplist
-nmap <leader>sj :echo "Not yet implemented."<cr>
+nmap <leader>sj <Action>(RecentLocations)
 " Key Maps
 nmap <leader>sk :map<cr>
 " Location List
@@ -443,4 +443,4 @@ nnomap Q @@
 
 " Jetbrains conflicts
 " https://github.com/JetBrains/ideavim/blob/master/doc/sethandler.md
-" None, yet.  Possible conflicts: -6befhjklorsvw
+" None, yet.  Possible conflicts: ctrl -6befhjklorsvw
