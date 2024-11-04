@@ -93,9 +93,9 @@ nmap <S-l> <Action>(NextTab)
 " Switch to Other Buffer (alternative)
 nmap <S-l> <Action>(NextTab)
 " Delete Buffer
-nmap <leader>bd <Action>(CloseActiveTab)
+nmap <leader>bd <Action>(CloseContent)
 " Delete Buffer and Window
-nmap <leader>bD <Action>(CloseActiveTab)
+nmap <leader>bD <Action>(CloseContent)
 " Escape and Clear hlsearch
 nmap <esc> :nohlsearch<CR>
 nmap <leader>ur :nohlsearch<CR>
@@ -123,7 +123,7 @@ nmap ]q <Action(GotoNextError)
 nmap <leader>cf <Action>(Format)
 vmap <leader>cf <Action>(Format)
 " Line Diagnostics
-nmap <leader>cd <Action>(ShowErrorsInProject)
+nmap <leader>cd <Action>(ActivateProblemsViewToolWindow)
 " Next Diagnostic
 nmap ]d <Action(GotoNextError)
 " Prev Diagnostic
@@ -193,7 +193,7 @@ nmap <leader>- :split<CR>
 " Split Window Right
 nmap <leader>| :vsplit<CR>
 " Delete Window
-nmap <leader>wd <Action>(CloseActiveTab)
+nmap <leader>wd <Action>(CloseContent)
 " Toggle Maximize
 nmap <leader>wm <Action>(ToggleDistractionFreeMode)
 " Last Tab
@@ -207,7 +207,7 @@ nmap <leader><tab><tab> :enew<CR>
 " Next Tab
 nmap <leader><tab>] <Action>(NextTab)
 " Close Tab
-nmap <leader><tab>d <Action>(CloseActiveTab)
+nmap <leader><tab>d <Action>(CloseContent)
 " Previous Tab
 nmap <leader><tab>[ <Action>(PreviousTab)
 
@@ -271,7 +271,7 @@ nmap <leader>ge <Action>(ActivateVersionControlToolWindow)
 " Telescope Keymaps
 
 " Find Files (Root Dir)
-nmap <leader><space> <Action>(GotoFile)
+nmap <leader><space> <Action>(Switcher)
 " Switch Buffer
 nmap <leader>, <Action>(Switcher)
 " Grep (Root Dir)
@@ -303,13 +303,13 @@ nmap <leader>sa :echo 'There is no equivalent mapping.'<cr>
 " Buffer
 nmap <leader>sb <Action>(Switcher)
 " Command History (alternative)
-nmap <leader>sc <Action>(ShowCommands)
+nmap <leader>sc :history<cr>
 " Commands
-nmap <leader>sC <Action>(ShowCommands)
+nmap <leader>sC :commands<cr>
 " Document Diagnostics
-nmap <leader>sd <Action>(ShowErrorsInProject)
+nmap <leader>sd <Action>(ActivateProblemsViewToolWindow)
 " Workspace Diagnostics
-nmap <leader>sD <Action>(ShowErrorsInProject)
+nmap <leader>sD <Action>(ActivateProblemsViewToolWindow)
 " Grep (Root Dir) (alternative)
 nmap <leader>sg <Action>(FindInPath)
 " Grep (cwd)
@@ -440,3 +440,7 @@ inoremap <C-W> <C-G>u<C-W>
 " Q isn't exactly the same.
 nnomap Q @@
 " There are several more Neovim mappings that need to be ported.  See link.
+
+" Jetbrains conflicts
+" https://github.com/JetBrains/ideavim/blob/master/doc/sethandler.md
+" None, yet.  Possible conflicts: -6befhjklorsvw
