@@ -76,22 +76,22 @@ nmap <C-Left> <Action>(DecrementWindowWidth)
 nmap <C-Right> <Action>(IncrementWindowWidth)
 " Move Down
 nmap <A-j> <Action>(MoveLineDown)
-" Move Down
 imap <A-j> <Esc><Action>(MoveLineDown)i
 " Move Up
-nmap <A-k> k
+nmap <A-k> <Action>(MoveLineUp)
+imap <A-k> <Esc><Action>(MoveLineUp)i
 " Prev Buffer
 nmap <S-h> <Action>(PreviousTab)
 " Next Buffer
 nmap <S-l> <Action>(NextTab)
 " Prev Buffer (alternative)
-nmap <S-h> <Action>(PreviousTab)
+nmap [b <Action>(PreviousTab)
 " Next Buffer (alternative)
-nmap [b <Action>(NextTab)
-" Switch to Other Buffer
 nmap ]b <Action>(NextTab)
+" Switch to Other Buffer
+nnoremap <leader>bb <C-^>
 " Switch to Other Buffer (alternative)
-nmap <leader>bb <Action>(NextTab)
+nnoremap <leader>` <C-^>
 " Delete Buffer
 nmap <leader>bd <Action>(CloseContent)
 " Delete Buffer and Window
@@ -99,8 +99,6 @@ nmap <leader>bD <Action>(CloseContent)
 " Escape and Clear hlsearch
 nmap <esc> :nohlsearch<CR>
 nmap <leader>ur :nohlsearch<CR>
-" Save File
-inoremap <C-s> <C-o>:w<CR>
 " Keywordprg
 nmap <leader>K :help<space><C-r><C-w><CR>
 " Add Comment Below
@@ -110,7 +108,7 @@ nmap gcO kgccj
 " Lazy
 nmap <leader>l <Action>(WelcomeScreen.Plugins)
 " New File
-nmap <leader>fn :enew<CR>
+nmap <leader>fn Action(NewElementSamePlace)<CR>
 " Location List
 nmap <leader>xl <Action>(ActivateProblemsViewToolWindow)
 " Quickfix List
@@ -155,7 +153,7 @@ nmap <leader>uc :echo 'There is no equivalent mapping for Toggle Conceallevel.'<
 " Toggle Treesitter Highlight
 nmap <leader>uT :echo 'There is no equivalent mapping for Toggle Treesitter Highlight.'<cr>
 " Toggle Background
-nmap <leader>ub :echo 'There is no equivalent mapping for Toggle Background.'<cr>
+nmap <leader>ub <Action>(QuickChangeScheme)
 " Toggle Inlay Hints
 nmap <leader>uh :echo 'There is no equivalent mapping for Toggle Inlay Hints.'<cr>
 " Lazygit (Root Dir)
@@ -164,8 +162,9 @@ nmap <leader>gg <Action>(ActivateCommitToolWindow)
 nmap <leader>gG <Action>(ActivateCommitToolWindow)
 " Git Blame Line
 nmap <leader>gb <Action>(Annotate)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git Browse
-nmap <leader>gB :echo 'Not yet implemented'<CR>
+nmap <leader>gB <Action>(Vcs.Show.Log)
 " Lazygit Current File History
 nmap <leader>gf <Action>(Vcs.Show.Log)
 " Lazygit Log
@@ -203,13 +202,13 @@ nmap <leader><tab>o <Action>(CloseOtherTabs)
 " First Tab
 nmap <leader><tab>f <Action>(GoToTab1)
 " New Tab
-nmap <leader><tab><tab> :enew<CR>
+nmap <leader><tab><tab> Action(NewElementSamePlace)<CR>
 " Next Tab
 nmap <leader><tab>] <Action>(NextTab)
-" Close Tab
-nmap <leader><tab>d <Action>(CloseContent)
 " Previous Tab
 nmap <leader><tab>[ <Action>(PreviousTab)
+" Close Tab
+nmap <leader><tab>d <Action>(CloseContent)
 
 
 " LSP Keymaps
@@ -271,7 +270,7 @@ nmap <leader>ge <Action>(ActivateVersionControlToolWindow)
 " Telescope Keymaps
 
 " Find Files (Root Dir)
-nmap <leader><space> <Action>(Switcher)
+nmap <leader><space> <Action>(GotoFile)
 " Switch Buffer
 nmap <leader>, <Action>(Switcher)
 " Grep (Root Dir)
@@ -438,7 +437,7 @@ nnoremap Y y$
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 " Q isn't exactly the same.
-nnomap Q @@
+nnoremap Q @@
 " There are several more Neovim mappings that need to be ported.  See link.
 
 " Jetbrains conflicts
