@@ -108,32 +108,32 @@ nmap gcO kgccj
 " Lazy
 nmap <leader>l <Action>(WelcomeScreen.Plugins)
 " New File
-nmap <leader>fn Action(NewElementSamePlace)<CR>
+nmap <leader>fn Action(NewElementSamePlace)
 " Location List
 nmap <leader>xl <Action>(ActivateProblemsViewToolWindow)
 " Quickfix List
 nmap <leader>xq <Action>(ActivateProblemsViewToolWindow)
 " Previous Quickfix
-nmap [q <Action(GotoPreviousError)
+nmap [q <Action>(GotoPreviousError)
 " Next Quickfix
-nmap ]q <Action(GotoNextError)
+nmap ]q <Action>(GotoNextError)
 " Format
 nmap <leader>cf <Action>(Format)
 vmap <leader>cf <Action>(Format)
 " Line Diagnostics
 nmap <leader>cd <Action>(ActivateProblemsViewToolWindow)
 " Next Diagnostic
-nmap ]d <Action(GotoNextError)
+nmap ]d <Action>(GotoNextError)
 " Prev Diagnostic
-nmap [d <Action(GotoPreviousError)
+nmap [d <Action>(GotoPreviousError)
 " Next Error
-nmap ]e <Action(GotoNextError)
+nmap ]e <Action>(GotoNextError)
 " Prev Error
-nmap [e <Action(GotoPreviousError)
+nmap [e <Action>(GotoPreviousError)
 " Next Warning
-nmap ]w <Action(GotoNextError)
+nmap ]w <Action>(GotoNextError)
 " Prev Warning
-nmap [w <Action(GotoPreviousError)
+nmap [w <Action>(GotoPreviousError)
 " Toggle Auto Format (Global)
 nmap <leader>ub :echo 'There is no equivalent mapping for Toggle Auto Format.'<cr>
 " Toggle Auto Format (Buffer)
@@ -202,7 +202,7 @@ nmap <leader><tab>o <Action>(CloseOtherTabs)
 " First Tab
 nmap <leader><tab>f <Action>(GoToTab1)
 " New Tab
-nmap <leader><tab><tab> Action(NewElementSamePlace)<CR>
+nmap <leader><tab><tab> Action(NewElementSamePlace)
 " Next Tab
 nmap <leader><tab>] <Action>(NextTab)
 " Previous Tab
@@ -252,6 +252,17 @@ nmap <a-n> <Action>(GotoNextError)
 " Prev Reference (alternative)
 nmap <a-p> <Action>(GotoPreviousError)
 
+" Bufferline
+
+" Delete buffers to the left
+nmap <leader>bl <Action>(CloseAllToTheLeft)
+" Toggle pin
+nmap <leader>bp <Action>(PinActiveTabToggle)
+" Delete Non-Pinned Buffers
+nmap <leader>bP <Action>(CloseAllUnpinnedEditors)
+" Delete buffers to the right
+nmap <leader>br <Action>(CloseAllToTheRight)
+
 " Neo-tree Keymaps
 
 " Buffer Explorer
@@ -266,6 +277,11 @@ nmap <leader>fe <Action>(ActivateProjectToolWindow)
 nmap <leader>fE <Action>(ActivateProjectToolWindow)
 " Git Explorer
 nmap <leader>ge <Action>(ActivateVersionControlToolWindow)
+
+" Notifications (noice, snacks)
+
+nmap <leader>snd <Action>(ClearAllNotifications)
+nmap <leader>un <Action>(ClearAllNotifications)
 
 " Telescope Keymaps
 
@@ -354,15 +370,15 @@ nmap <leader>uC <Action>(QuickChangeScheme)
 " Run with Args
 nmap <leader>da <Action>(ChooseRunConfiguration)
 " Toggle Breakpoint
-nmap <leader>db <Action>(ToggleBreakpointAction)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
 " Breakpoint Condition
-nmap <leader>dB <Action>(ToggleBreakpointAction)
+nmap <leader>dB <Action>(AddConditionalBreakpoint)
 " Continue
 nmap <leader>dc <Action>(Resume)
 " Run to Cursor
 nmap <leader>dC <Action>(ForceRunToCursor)
 " Go to Line (No Execute)
-nmap <leader>dg <Action>(GotoLine)
+nmap <leader>dg :echo 'Not yet implemented.'<cr>
 " Step Into
 nmap <leader>di <Action>(StepInto)
 " Down
@@ -407,7 +423,7 @@ nmap ]t /TODO<cr>
 nmap <leader>de <Action>(EvaluateExpression)
 vmap <leader>de <Action>(EvaluateExpression)
 " Dap UI
-nmap <leader>du :echo 'Not yet implemented.'<cr>
+nmap <leader>du <Action>(ActivateDebugToolWindow)
 
 " Neotest Keymaps
 
