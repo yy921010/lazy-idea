@@ -428,23 +428,27 @@ nmap <leader>du <Action>(ActivateDebugToolWindow)
 " Neotest Keymaps
 
 " Run Last
-nmap <leader>tl <Action>(Debug)
+nmap <leader>tl <Action>(Run)
 " Show Output
 nmap <leader>to :echo 'Not yet implemented.'<cr>
 " Toggle Output Panel
 nmap <leader>tO :echo 'Not yet implemented.'<cr>
 " Run Nearest
-nmap <leader>tr <Action>(RunTestGroup)
+nmap <leader>tr <Action>(RunClass)
 " Toggle Summary
 nmap <leader>ts <Action>(ShowTestSummary)
 " Stop
 nmap <leader>tS <Action>(Stop)
 " Run File
-nmap <leader>tt <Action>(RunTestGroup)
+nmap <leader>tt <Action>(RunClass)
 " Run All Test Files
 nmap <leader>tT <Action>(RunAllTests)
 " Toggle Watch
 nmap <leader>tw <Action>(ToggleTestWatch)
+
+" nvim-dap
+" Debug Nearest
+nmap <leader>td <Action>(ChooseDebugConfiguration)
 
 " Neovim mappings
 " https://neovim.io/doc/user/vim_diff.html#_default-mappings
