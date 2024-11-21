@@ -22,7 +22,8 @@ set shiftround
 " Columns of context
 set sidescrolloff=8
 " which-key says to set this high, or set notimeout
-set timeoutlen=5000
+set timeoutlen=10000
+set notimeout
 set undolevels=10000
 " Disable line wrap
 set nowrap
@@ -96,15 +97,17 @@ nnoremap <leader>` <C-^>
 nmap <leader>bd <Action>(CloseContent)
 " Delete Buffer and Window
 nmap <leader>bD <Action>(CloseContent)
+" Delete Other Buffers
+nmap <leader>bo <Action>(CloseAllEditorsButActive)
 " Escape and Clear hlsearch
 nmap <esc> :nohlsearch<CR>
 nmap <leader>ur :nohlsearch<CR>
 " Keywordprg
 nmap <leader>K :help<space><C-r><C-w><CR>
 " Add Comment Below
-nmap gco jgcck
+nmap gco o<c-o>gcc
 " Add Comment Above
-nmap gcO kgccj
+nmap gcO O<c-o>gcc
 " Lazy
 nmap <leader>l <Action>(WelcomeScreen.Plugins)
 " New File
@@ -198,7 +201,7 @@ nmap <leader>wm <Action>(ToggleDistractionFreeMode)
 " Last Tab
 nmap <leader><tab>l <Action>(GoToLastTab)
 " Close Other Tabs
-nmap <leader><tab>o <Action>(CloseOtherTabs)
+nmap <leader><tab>o <Action>(CloseAllToTheLeft)<Action>(CloseAllToTheRight)
 " First Tab
 nmap <leader><tab>f <Action>(GoToTab1)
 " New Tab
