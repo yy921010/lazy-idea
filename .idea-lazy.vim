@@ -3,6 +3,24 @@
 " To install, add this to the top of your ~/.ideavimrc:
 " source ~/.idea-lazy.vim
 
+" Hosted at:
+" https://gist.github.com/mikeslattery/d2f2562e5bbaa7ef036cf9f5a13deff5
+
+" If you are a newbie, run this in Neovim to learn basic maps-> :Tutor
+
+" Useful Jetbrains Tools Maps, outside of IDEAVim
+" <esc>       Return to editor
+" Hide the tool window.
+" <s-esc>     <Action>(HideActiveWindow)
+" Go to the tool window.
+" <f12>       <Action>(JumpToLastWindow)
+" Toggle Maximize/Restore the tool window.
+" <c-s-quote> <Action>(MaximizeToolWindow)
+" <M-3>       <Action>(ActivateFindToolWindow)
+" <M-4>       <Action>(ActivateRunToolWindow)
+" <M-5>       <Action>(ActivateDebugToolWindow)
+" <M-6>       <Action>(ActivateProblemsViewToolsWindow)
+
 " LazyVim default settings
 " https://www.lazyvim.org/configuration/general
 
@@ -56,6 +74,9 @@ set matchit
 " Key maps
 
 " https://www.lazyvim.org/configuration/keymaps
+
+" To track Action-IDs
+" :action VimFindActionIdAction
 
 " General Keymaps
 
@@ -165,11 +186,10 @@ nmap <leader>gg <Action>(ActivateCommitToolWindow)
 nmap <leader>gG <Action>(ActivateCommitToolWindow)
 " Git Blame Line
 nmap <leader>gb <Action>(Annotate)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git Browse
 nmap <leader>gB <Action>(Vcs.Show.Log)
 " Lazygit Current File History
-nmap <leader>gf <Action>(Vcs.Show.Log)
+nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
 " Lazygit Log
 nmap <leader>gl <Action>(Vcs.Show.Log)
 " Lazygit Log (cwd)
@@ -177,19 +197,19 @@ nmap <leader>gL <Action>(Vcs.Show.Log)
 " Quit All
 nmap <leader>qq <Action>(Exit)
 " Inspect Pos
-nmap <leader>ui <Actrion>(FindUsages)
+nmap <leader>ui <Actrion>(ActivateStructureToolWindow)
 " Inspect Tree
 nmap <leader>uI <Action>(ActivateStructureToolWindow)
 " LazyVim Changelog
-nmap <leader>L <Action>(Vcs.Show.Log)
+nmap <leader>L <Action>(WhatsNewAction)
 " Terminal (Root Dir)
 nmap <leader>ft <Action>(ActivateTerminalToolWindow)
 " Terminal (cwd)
 nmap <leader>fT <Action>(ActivateTerminalToolWindow)
 " Terminal (Root Dir)
-" nmap <C-/><C-w> <Action>(ActivateTerminalToolWindow)
-" Hide Terminal
-nmap <C-_> <Action>(ActivateTerminalToolWindow)
+nmap <C-/> <Action>(ActivateTerminalToolWindow)
+" nmap <C-_> 'There is no equivalent mapping for <c-_>.'<cr>
+" Hide Terminal - terminal mode maps not possible
 " Split Window Below.  :split<cr> doesn't work.
 nmap <leader>- <c-w>s
 " Split Window Right
@@ -198,21 +218,23 @@ nmap <leader><bar> <c-w>v
 nmap <leader>wd <Action>(CloseContent)
 " Toggle Maximize
 nmap <leader>wm <Action>(ToggleDistractionFreeMode)
-" Last Tab
-nmap <leader><tab>l <Action>(GoToLastTab)
-" Close Other Tabs
-nmap <leader><tab>o <Action>(CloseAllToTheLeft)<Action>(CloseAllToTheRight)
-" First Tab
-nmap <leader><tab>f <Action>(GoToTab1)
-" New Tab
-nmap <leader><tab><tab> Action(NewElementSamePlace)
-" Next Tab
-nmap <leader><tab>] <Action>(NextTab)
-" Previous Tab
-nmap <leader><tab>[ <Action>(PreviousTab)
-" Close Tab
-nmap <leader><tab>d <Action>(CloseContent)
 
+" Tabs are treated as saved layouts
+
+" Last Tab
+nmap <leader><tab>l <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
+" Close Other Tabs
+nmap <leader><tab>o :<cr>
+" First Tab
+nmap <leader><tab>f <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
+" New Tab
+nmap <leader><tab>f <Action>(StoreDefaultLayout)<Action>(StoreNewLayout)
+" Next Tab
+nmap <leader><tab>] <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
+" Previous Tab
+nmap <leader><tab>[ <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
+" Close Tab
+nmap <leader><tab>f <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
 
 " LSP Keymaps
 
@@ -220,6 +242,7 @@ nmap <leader><tab>d <Action>(CloseContent)
 nmap <leader>cc :echo 'There is no equivalent mapping for Lsp Info.'<cr>
 " Goto Definition
 nmap gd <Action>(GotoDeclaration)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " References
 nmap gr <Action>(FindUsages)
 " Goto Implementation
@@ -237,7 +260,6 @@ nmap <leader>ca <Action>(RefactoringMenu)
 vmap <leader>ca <Action>(RefactoringMenu)
 " Run Codelens
 nmap <leader>cc :echo 'There is no equivalent mapping for Run Codelens.'<cr>
-vmap <leader>cc :echo 'There is no equivalent mapping for Run Codelens.'<cr>
 " Refresh & Display Codelens
 nmap <leader>cC :echo 'There is no equivalent mapping for Refresh & Display Codelens.'<cr>
 " Rename File
@@ -323,7 +345,7 @@ nmap <leader>sb <Action>(Switcher)
 " Command History (alternative)
 nmap <leader>sc :history<cr>
 " Commands
-nmap <leader>sC :commands<cr>
+nmap <leader>sC <Action>(GotoAction)
 " Document Diagnostics
 nmap <leader>sd <Action>(ActivateProblemsViewToolWindow)
 " Workspace Diagnostics
@@ -466,3 +488,18 @@ nnoremap Q @@
 " Jetbrains conflicts
 " https://github.com/JetBrains/ideavim/blob/master/doc/sethandler.md
 " None, yet.  Possible conflicts: ctrl -6befhjklorsvw
+
+" Notes and Caveats:
+" Tabs map to JB saved layouts.
+" Not everything has been tested.
+
+" TODOs:
+" Jetbrains conflicts
+" Improve Todo-comments
+" Convert to a github project
+" which-key labels
+" Test every map.  sidy-by-side.
+" Compare all which-key popups
+" Consider:
+"   flash, grub-far, noice, trouble, mini.diff, oversear, copilotchat,
+"   dial, outline, md preview, harpoon, octo
