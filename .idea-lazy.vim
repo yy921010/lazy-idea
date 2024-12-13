@@ -1,5 +1,12 @@
 " ~/.idea-lazy.vim
 
+" LazyVim mappings for Jetbrains IDEAVim plugin.
+
+" Required plugins:
+"  IDEAVim
+"  Which-Key
+"  IdeaVim-Sneak
+
 " To install, add this to the top of your ~/.ideavimrc:
 " source ~/.idea-lazy.vim
 
@@ -16,10 +23,16 @@
 " <f12>       <Action>(JumpToLastWindow)
 " Toggle Maximize/Restore the tool window.
 " <c-s-quote> <Action>(MaximizeToolWindow)
+" Reload files.  Useful after making edits in Neovim or CL.
+" <c-m-y>     <Action>(Synchronize)
+" <M-left>    <Action>(PreviousTab)
+" <M-right>   <Action>(NextTab)
+" <c-F4>      <Action>(CloseTab)
 " <M-3>       <Action>(ActivateFindToolWindow)
 " <M-4>       <Action>(ActivateRunToolWindow)
 " <M-5>       <Action>(ActivateDebugToolWindow)
 " <M-6>       <Action>(ActivateProblemsViewToolsWindow)
+" <c-s-a>     <Action>(FindAction)
 
 " LazyVim default settings
 " https://www.lazyvim.org/configuration/general
