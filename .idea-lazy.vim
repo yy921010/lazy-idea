@@ -1,8 +1,8 @@
 " ~/.idea-lazy.vim
 
-" LazyVim mappings for Jetbrains IDEAVim plugin.
+" LazyVim mappings for Jetbrains IDEs
 
-" Required plugins:
+" Required plugins. https://plugins.jetbrains.com/bundles/7-ideavim-bundle
 "  IDEAVim
 "  Which-Key
 "  IdeaVim-Sneak
@@ -10,29 +10,27 @@
 " To install, add this to the top of your ~/.ideavimrc:
 " source ~/.idea-lazy.vim
 
-" Hosted at:
+" This file is hosted at:
 " https://gist.github.com/mikeslattery/d2f2562e5bbaa7ef036cf9f5a13deff5
 
-" If you are a newbie, run this in Neovim to learn basic maps-> :Tutor
+" Beginners, run this to learn basic maps:
+" nvim --clean +Tutor
 
-" Useful Jetbrains Tools Maps, outside of IDEAVim
+" Useful Jetbrains Tool Windows' Maps:
 " <esc>       Return to editor
-" Hide the tool window.
-" <s-esc>     <Action>(HideActiveWindow)
-" Go to the tool window.
-" <f12>       <Action>(JumpToLastWindow)
-" Toggle Maximize/Restore the tool window.
-" <c-s-quote> <Action>(MaximizeToolWindow)
-" Reload files.  Useful after making edits in Neovim or CL.
-" <c-m-y>     <Action>(Synchronize)
-" <M-left>    <Action>(PreviousTab)
-" <M-right>   <Action>(NextTab)
-" <c-F4>      <Action>(CloseTab)
-" <M-3>       <Action>(ActivateFindToolWindow)
-" <M-4>       <Action>(ActivateRunToolWindow)
-" <M-5>       <Action>(ActivateDebugToolWindow)
-" <M-6>       <Action>(ActivateProblemsViewToolsWindow)
-" <c-s-a>     <Action>(FindAction)
+" <S-esc>     Hide the tool window
+" <F12>       Go to the tool window
+" <C-S-quote> Toggle Maximize/Restore the tool window
+" <C-M-y>     Reload files.  Useful after making edits in Neovim or CL
+" <M-left>    Previous Tab
+" <M-right>   Next Tab
+" <C-F4>      Close Tab
+" <M-3>       Activate Find Tool Window
+" <M-6>       Activate Problems View Tool Window
+" <c-s-a>     Find Action
+
+" LazyVim's Java extra: https://www.lazyvim.org/extras/lang/java
+
 
 " LazyVim default settings
 " https://www.lazyvim.org/configuration/general
