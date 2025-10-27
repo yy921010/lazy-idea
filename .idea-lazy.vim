@@ -65,6 +65,7 @@ set backspace=indent,eol,start
 set formatoptions=tcqj
 set listchars=tab:>\ ,trail:-,nbsp:+
 set shortmess=filnxtToOF
+set keep-english-in-normal
 
 " Enable plugin behavior
 
@@ -514,3 +515,4 @@ nnoremap Q @@
 " Consider:
 "   flash, grub-far, noice, trouble, mini.diff, oversear, copilotchat,
 "   dial, outline, md preview, harpoon, octo
+nnoremap <leader>e :action ProjectViewToggle<CR>
